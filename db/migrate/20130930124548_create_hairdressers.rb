@@ -2,7 +2,7 @@ class CreateHairdressers < ActiveRecord::Migration
 
   def self.up
     create_table :hairdressers do |t|
-      t.string :title, null: false, default: 'New hairdresser'
+      t.column :title, :string, null: false, default: 'New hairdresser'
     end
   end
 
