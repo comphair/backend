@@ -42,7 +42,6 @@ namespace :db do
 
 end
 
-
 namespace :g do
   desc "Generate migration"
   task :migration do

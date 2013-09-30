@@ -2,9 +2,7 @@ class CreateHairdressers < ActiveRecord::Migration
 
   def self.up
     create_table :hairdressers do |t|
-      t.string :app_id, null: false
-      t.string :app_secret, null: false
-      t.string :api_key, null: false
+      t.string :title, null: false, default: 'New hairdresser'
     end
   end
 

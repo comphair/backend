@@ -17,9 +17,7 @@ ActiveRecord::Schema.define(version: 20130930124548) do
   enable_extension "plpgsql"
 
   create_table "hairdressers", force: true do |t|
-    t.string "app_id",     null: false
-    t.string "app_secret", null: false
-    t.string "api_key",    null: false
+    t.string "title", default: "New hairdresser", null: false
   end
 
 end
