@@ -1,7 +1,7 @@
 class API::Hairdressers < API::Base
 
   desc "Index"
-  get '/' do
+  get 'hairdresser' do
     Hairdresser.all
   end
 
@@ -9,7 +9,7 @@ class API::Hairdressers < API::Base
   params do
     requires :title, type: String, desc: "Title"
   end
-  post '/' do
+  post 'hairdresser' do
     Hairdresser.create!({
       title: params[:title]
       })
