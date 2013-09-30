@@ -1,3 +1,4 @@
-adapter: sqlite3
+host: 'localhost'
+adapter: 'postgresql'
 encoding: utf-8
-database: database/development.sqlite
+database: 'ar-no-rails'

@@ -1,12 +1,12 @@
 source "https://rubygems.org"
 
 gem "grape"
-gem "pry"
 gem "activerecord", "~>3.2.14"
-gem "sqlite3"
-gem "rake", "~>10.1.0"
+gem "pg"
 
 group :development do
+  gem "rake", "~>10.1.0"
+  gem "pry"
   gem "awesome_print"
   gem "better_errors"
   gem "binding_of_caller"
