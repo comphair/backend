@@ -3,6 +3,7 @@ require "pry"
 require "awesome_print"
 require "better_errors"
 require "grape"
+require "grape-swagger"
 require "active_record"
 
 Dir["#{File.dirname(__FILE__)}/app/**/*.rb"].each {|f| require f}
@@ -14,6 +15,6 @@ ApplicationServer = Rack::Builder.new do
   use Rack::Static, :urls => ["/swagger"], :root => "public", index: "index.html"
 
   map "/" do
-    run API::Hairdressers
+    run API::Root
   end
 end
