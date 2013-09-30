@@ -11,5 +11,9 @@ ActiveRecord::Base.establish_connection(YAML.load(File.read("config/database.yml
 
 ApplicationServer = Rack::Builder.new do
   use BetterErrors::Middleware
-  run API::Hairdressers
+  use Rack::Static, :urls => ['/swagger'], :root => "public", index: 'index.html'
+
+  map "/" do
+    run API::Hairdressers
+  end
 end

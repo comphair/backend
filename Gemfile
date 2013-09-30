@@ -5,6 +5,7 @@ gem "activerecord", "~>3.2.14"
 gem "pg"
 
 group :development do
+  gem "grape-swagger"
   gem "rake", "~>10.1.0"
   gem "pry"
   gem "awesome_print"
