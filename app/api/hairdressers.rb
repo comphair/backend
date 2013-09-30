@@ -5,7 +5,7 @@ class API::Hairdressers < API::Base
     Hairdresser.all
   end
 
-  desc "Create new"
+  desc "Create a new hairdresser"
   params do
     requires :title, type: String, desc: "Title"
   end
