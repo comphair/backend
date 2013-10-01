@@ -16,6 +16,7 @@ when "development"
   require "pry"
   require "awesome_print"
   require "better_errors"
+  require "sidekiq/web"
 when "testing"
   require "rack/test"
   require 'database_cleaner'

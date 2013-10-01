@@ -9,6 +9,7 @@ $ rake db:reset
 
 ## Server
 ```sh
+$ sidekiq -r sidekiq.rb
 $ rackup # or
 $ rerun rackup
 ```
@@ -24,4 +25,5 @@ $ guard
 * [Brew](http://brew.sh/)
 * [rbenv](https://github.com/sstephenson/rbenv)
 * [Bundler](http://bundler.io/)
+* [Redis](http://redis.io/)
 * [PostgreSQL](http://postgresapp.com/)

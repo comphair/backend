@@ -19,6 +19,9 @@ ApplicationServer = Rack::Builder.new do
   if ENV["ENV"] == "development"
     use BetterErrors::Middleware
     use Rack::Static, :urls => ["/swagger"], :root => "public", index: "index.html"
+    map "/sidekiq" do
+      run Sidekiq::Web
+    end
   end
 
   map "/" do

@@ -4,6 +4,7 @@ gem "grape"
 gem "activerecord", "~>3.2.14"
 gem "validates_timeliness"
 gem "pg"
+gem "sidekiq"
 
 group :development do
   gem "grape-swagger"
@@ -14,7 +15,7 @@ group :development do
   gem "binding_of_caller"
   gem "rerun"
   gem "guard"
-  gem 'guard-rspec'
+  gem "guard-rspec"
 end
 
 group :testing do
