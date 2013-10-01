@@ -11,29 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001113412) do
+ActiveRecord::Schema.define(version: 20131001123150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
-    t.integer "hairdresser_id",               null: false
-    t.string  "first_name",                   null: false
-    t.string  "last_name",                    null: false
-    t.string  "street",                       null: false
-    t.string  "zipcode",                      null: false
-    t.string  "city",                         null: false
-    t.string  "country",                      null: false
-    t.float   "latitude",       default: 0.0, null: false
-    t.float   "longitude",      default: 0.0, null: false
+    t.integer "store_id",                 null: false
+    t.string  "first_name",               null: false
+    t.string  "last_name",                null: false
+    t.string  "street",                   null: false
+    t.string  "zipcode",                  null: false
+    t.string  "city",                     null: false
+    t.string  "country",                  null: false
+    t.float   "latitude",   default: 0.0, null: false
+    t.float   "longitude",  default: 0.0, null: false
   end
 
   create_table "appointments", force: true do |t|
-    t.string "date"
+    t.integer "timeslot_id",   null: false
+    t.integer "haircut_id",    null: false
+    t.integer "customer_id",   null: false
+    t.integer "start_minutes", null: false
+    t.text    "comment"
   end
 
   create_table "customers", force: true do |t|
-    t.string "title"
+    t.string "name", null: false
+  end
+
+  create_table "haircuts", force: true do |t|
+    t.integer "store_id",               null: false
+    t.decimal "price",    default: 0.0, null: false
+    t.integer "duration", default: 0,   null: false
   end
 
   create_table "schedules", force: true do |t|
