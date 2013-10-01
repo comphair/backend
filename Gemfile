@@ -5,6 +5,7 @@ gem "activerecord", "~>3.2.14"
 gem "validates_timeliness"
 gem "pg"
 gem "sidekiq"
+gem "geocoder"
 
 group :development do
   gem "grape-swagger"
