@@ -2,6 +2,8 @@ ENV["ENV"] = "testing"
 
 require "./env"
 
+DatabaseCleaner.strategy = :truncation
+
 RSpec.configure do |config|
 
   include Rack::Test::Methods
@@ -15,5 +17,3 @@ RSpec.configure do |config|
   end
 
 end
-
-DatabaseCleaner.strategy = :truncation
