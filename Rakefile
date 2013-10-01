@@ -1,21 +1,22 @@
-require "active_record"
+require "./env"
 
 namespace :db do
 
-  env = ENV["ENV"] || "development"
-  db_config       = YAML::load(File.open('config/database.yml'))[env]
-  db_config_admin = db_config.merge({'database' => 'postgres', 'schema_search_path' => 'public'})
+  db_config = YAML::load(File.open('config/database.yml'))[ENV["ENV"]]
+
+  task :load_admin do
+    db_config_admin = db_config.merge({'database' => 'postgres', 'schema_search_path' => 'public'})
+    ActiveRecord::Base.establish_connection(db_config_admin)
+  end
 
   desc "Create the database"
-  task :create do
-    ActiveRecord::Base.establish_connection(db_config_admin)
+  task :create => [:load_admin] do
     ActiveRecord::Base.connection.create_database(db_config["database"])
     puts "Database created."
   end
 
   desc "Migrate the database"
   task :migrate do
-    ActiveRecord::Base.establish_connection(db_config)
     ActiveRecord::Migration.verbose = false
     ActiveRecord::Migrator.migrate("db/migrate/")
     Rake::Task["db:schema"].invoke
@@ -23,10 +24,15 @@ namespace :db do
   end
 
   desc "Drop the database"
-  task :drop do
-    ActiveRecord::Base.establish_connection(db_config_admin)
+  task :drop => [:load_admin] do
     ActiveRecord::Base.connection.drop_database(db_config["database"])
     puts "Database deleted."
+  end
+
+  desc "Seed the database"
+  task :seed do
+    # load "./db/seeds.rb"
+    # ActiveRecord::Tasks::DatabaseTasks.load_seed
   end
 
   desc "Reset the database"
