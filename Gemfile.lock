@@ -88,7 +88,10 @@ GEM
     sexp_processor (4.3.0)
     slop (2.1.0)
     thor (0.18.1)
+    timeliness (0.3.7)
     tzinfo (0.3.37)
+    validates_timeliness (3.0.14)
+      timeliness (~> 0.3.6)
     virtus (0.5.5)
       backports (~> 3.3)
       descendants_tracker (~> 0.0.1)
@@ -110,3 +113,4 @@ DEPENDENCIES
   rake (~> 10.1.0)
   rerun
   rspec
+  validates_timeliness

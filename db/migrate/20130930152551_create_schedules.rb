@@ -2,7 +2,7 @@ class CreateSchedules < ActiveRecord::Migration
 
   def self.up
     create_table :schedules do |t|
-      t.column :hairdresser_id, :integer, null: false
+      t.belongs_to :store, null: false
     end
   end
 

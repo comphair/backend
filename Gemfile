@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "grape"
 gem "activerecord", "~>3.2.14"
+gem "validates_timeliness"
 gem "pg"
 
 group :development do

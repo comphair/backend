@@ -2,7 +2,7 @@ class CreateCustomers < ActiveRecord::Migration
 
   def self.up
     create_table :customers do |t|
-      t.column :title, :string
+      t.string :name, null: false
     end
   end
 
