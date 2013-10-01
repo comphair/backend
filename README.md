@@ -15,6 +15,7 @@ $ rerun rackup
 
 ## Testing
 ```sh
+$ rake db:reset ENV=testing
 $ rspec # or
 $ guard
 ```
