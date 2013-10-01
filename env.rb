@@ -2,6 +2,8 @@ require "grape"
 require "active_record"
 require "validates_timeliness"
 
+require "./app/api/base"
+
 Dir["#{File.dirname(__FILE__)}/app/**/*.rb"].each {|f| require f}
 
 env = ENV["ENV"] ||= "development"
@@ -14,9 +16,6 @@ when "development"
   require "pry"
   require "awesome_print"
   require "better_errors"
-
-  API::Root.add_swagger_documentation mount_path: "/docs",
-                                      hide_documentation_path: true
 when "testing"
   require "rack/test"
   require 'database_cleaner'
