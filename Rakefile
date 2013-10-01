@@ -2,7 +2,8 @@ require "active_record"
 
 namespace :db do
 
-  db_config       = YAML::load(File.open('config/database.yml'))
+  env = ENV["ENV"] || "development"
+  db_config       = YAML::load(File.open('config/database.yml'))[env]
   db_config_admin = db_config.merge({'database' => 'postgres', 'schema_search_path' => 'public'})
 
   desc "Create the database"
@@ -15,6 +16,7 @@ namespace :db do
   desc "Migrate the database"
   task :migrate do
     ActiveRecord::Base.establish_connection(db_config)
+    ActiveRecord::Migration.verbose = false
     ActiveRecord::Migrator.migrate("db/migrate/")
     Rake::Task["db:schema"].invoke
     puts "Database migrated."

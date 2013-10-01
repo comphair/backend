@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20131001124919) do
     t.integer "store_id",               null: false
     t.decimal "price",    default: 0.0, null: false
     t.integer "duration", default: 0,   null: false
+    t.boolean "for_men",                null: false
   end
 
   create_table "invoices", force: true do |t|

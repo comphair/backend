@@ -5,6 +5,7 @@ class CreateHaircuts < ActiveRecord::Migration
       t.belongs_to :store, null: false
       t.decimal :price, null: false, default: 0
       t.integer :duration, null: false, default: 0
+      t.boolean :for_men, null: false
     end
   end
 

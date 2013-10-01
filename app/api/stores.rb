@@ -1,17 +1,12 @@
-class API::Hairdressers < API::Base
+class API::Stores < API::Base
 
-  desc "Index"
-  get 'hairdresser' do
-    Hairdresser.all
-  end
-
-  desc "Create a new hairdresser"
+  desc "Find stores"
   params do
-    requires :title, type: String, desc: "Title"
+    requires :location, type: String, desc: "name of the customer"
   end
-  post 'hairdresser' do
-    Hairdresser.create!({
-      title: params[:title]
+  post 'customer' do
+    Customer.create!({
+      name: params[:name]
       })
   end
 

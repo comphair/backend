@@ -1,4 +1,10 @@
-host: 'localhost'
-adapter: 'postgresql'
-encoding: utf-8
-database: 'test'
+development:
+  host: 'localhost'
+  adapter: 'postgresql'
+  encoding: utf-8
+  database: 'salon'
+testing:
+  host: 'localhost'
+  adapter: 'postgresql'
+  encoding: utf-8
+  database: 'salon-test'
