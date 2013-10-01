@@ -1,8 +1,7 @@
 module API
   class Root < Grape::API
-    mount API::Hairdressers
+    mount API::Stores
     add_swagger_documentation mount_path: "/docs",
-                              markdown: true,
                               hide_documentation_path: true
   end
 end
