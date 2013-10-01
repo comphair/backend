@@ -4,7 +4,7 @@ class API::Customers < API::Base
   params do
     requires :name, type: String, desc: "name of the customer"
   end
-  post 'customer' do
+  post 'customers' do
     Customer.create!({
       name: params[:name]
       })

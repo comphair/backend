@@ -11,7 +11,7 @@ class API::Stores < API::Base
     optional :for_men, type: Boolean, desc: "Looking for stores with men haircut or not"
   end
   get 'stores' do
-    Store.all
+    Store.all!
   end
 
 end
