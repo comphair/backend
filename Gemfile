@@ -8,6 +8,7 @@ gem "sidekiq"
 gem "geocoder"
 
 group :development do
+  gem 'sinatra' # needed for sidekiq
   gem "grape-swagger"
   gem "rake", "~>10.1.0"
   gem "pry"

@@ -1,6 +1,7 @@
 require "grape"
 require "active_record"
 require "validates_timeliness"
+require "geocoder"
 
 require "./app/api/base"
 
@@ -21,4 +22,3 @@ when "testing"
   require "rack/test"
   require 'database_cleaner'
 end
-
