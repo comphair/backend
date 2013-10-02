@@ -13,6 +13,8 @@
     city: "New York",
     country: "USA"
     })
+  store.create_schedule
+  store.save!
 end
 
 5.times do |i|

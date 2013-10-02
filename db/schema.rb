@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20131001124919) do
 
   create_table "invoices", force: true do |t|
     t.integer "store_id",                          null: false
-    t.integer "invoice_id",                        null: false
     t.integer "timespan",                          null: false
     t.integer "number_transactions", default: 0,   null: false
     t.decimal "total",               default: 0.0, null: false
