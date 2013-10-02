@@ -1,8 +1,4 @@
-ENV["ENV"] = "testing"
-
-require "./env"
-
-DatabaseCleaner.strategy = :truncation
+require File.join(File.dirname(__FILE__), '../spec_helper')
 
 RSpec.configure do |config|
 
@@ -10,10 +6,6 @@ RSpec.configure do |config|
 
   def app
     self.described_class
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.clean
   end
 
 end
