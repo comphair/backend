@@ -2,7 +2,7 @@ class API::Stores < API::Base
 
   desc "Find stores"
   params do
-    group "coordinate" do
+    group :coordinate do
       requires :latitude, type: Float, desc: "Latitude coordinate"
       requires :longitude, type: Float, desc: "Longitude coordinate"
     end
@@ -11,7 +11,14 @@ class API::Stores < API::Base
     optional :for_men, type: Boolean, desc: "Looking for stores with men haircut or not"
   end
   get 'stores' do
-    Store.includes(:address)
+    location = [params[:coordinate][:latitude], params[:coordinate][:longitude]]
+    radius = 1
+    addresses = Address.includes(:store).near(location, radius)
+    stores = []
+    addresses.each do |address|
+      stores.push address.store
+    end
+    stores
   end
 
 end
