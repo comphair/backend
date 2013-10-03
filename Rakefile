@@ -43,7 +43,6 @@ namespace :db do
       FactoryGirl.create(:store, store)
     end
     seed_data[:customers].each { |customer| FactoryGirl.create(:customer, customer) }
-    # load "./db/seeds.rb"
     puts "Database seeded."
   end
 
