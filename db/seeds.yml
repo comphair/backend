@@ -1,0 +1,38 @@
+stores:
+  - title: "Samar Spa & salon"
+    rating: 5
+    address: # coordiantes (40.780056, -73.946570)
+      street: "1758 1st Ave"
+      zipcode: "10128"
+      city: "New York"
+      state: "NY"
+      country: "United States"
+  - title: "Jean Louis David"
+    rating: 4
+    address:
+      street: "1180 Avenue of the Americas #2"
+      zipcode: "10036"
+      city: "New York"
+      state: "NY"
+      country: "United States"
+  - title: "Yves Durif Salon"
+    rating: 3
+    address:
+      street: "35 E 76th St"
+      zipcode: "10021"
+      city: "New York"
+      state: "NY"
+      country: "United States"
+  - title: "Samar Spa & salon"
+    rating: 2
+    address:
+      street: "172 W 85th St"
+      zipcode: "10024"
+      city: "New York"
+      state: "NY"
+      country: "United States"
+customers:
+  - name: "John Doe"
+  - name: "Dohn Yoe"
+  - name: "Nohn Joe"
+  - name: "Nohn Noe"

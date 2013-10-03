@@ -1,4 +1,6 @@
 require "./env"
+require 'active_record/schema_dumper'
+
 
 namespace :db do
 
@@ -35,7 +37,13 @@ namespace :db do
 
   desc "Seed the database"
   task :seed => :connect do
-    load "./db/seeds.rb"
+    seed_data = YAML::load(File.open('db/seeds.yml')).recursive_symbolize_keys!
+    seed_data[:stores].each do |store|
+      store[:address] = FactoryGirl.build(:address, store[:address])
+      FactoryGirl.create(:store, store)
+    end
+    seed_data[:customers].each { |customer| FactoryGirl.create(:customer, customer) }
+    # load "./db/seeds.rb"
     puts "Database seeded."
   end
 
@@ -45,7 +53,6 @@ namespace :db do
   desc 'Create a db/schema.rb file that is portable against any DB supported by AR'
   task :schema do
     ActiveRecord::Base.establish_connection(db_config)
-    require 'active_record/schema_dumper'
     filename = "db/schema.rb"
     File.open(filename, "w:utf-8") do |file|
       ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
@@ -78,5 +85,16 @@ end
 
     puts "Migration #{path} created"
     abort # needed stop other tasks
+  end
+end
+
+class Hash
+  def recursive_symbolize_keys!
+    symbolize_keys!
+    # symbolize each hash in .values
+    values.each{|h| h.recursive_symbolize_keys! if h.is_a?(Hash) }
+    # symbolize each hash inside an array in .values
+    values.select{|v| v.is_a?(Array) }.flatten.each{|h| h.recursive_symbolize_keys! if h.is_a?(Hash) }
+    self
   end
 end

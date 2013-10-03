@@ -7,7 +7,7 @@ describe Address do
     it "should adjust coordinates after validation" do
       Geocoder.configure(:lookup => :test)
       Geocoder::Lookup::Test.add_stub("96 E 7th St, 10009 New York, NY, United States", [{ 'latitude' => 40.7143528, 'longitude' => -74.0059731 }])
-      address = FactoryGirl.build(:address, {
+      address = FactoryGirl.build(:address_with_store, {
         street: "96 E 7th St",
         zipcode: "10009",
         city: "New York",

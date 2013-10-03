@@ -20,6 +20,8 @@ when "development"
   require "awesome_print"
   require "better_errors"
   require "sidekiq/web"
+  require "factory_girl"
+  FactoryGirl.find_definitions
 when "testing"
   require "rack/test"
   require "database_cleaner"
