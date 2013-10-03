@@ -2,22 +2,22 @@ source "https://rubygems.org"
 
 gem "grape"
 gem "activerecord", "~>3.2.14"
-gem "validates_timeliness"
+gem "activevalidators"
 gem "pg"
 gem "sidekiq"
 gem "geocoder"
 
 group :development do
   gem 'sinatra' # needed for sidekiq
-  gem "grape-swagger"
+  gem "grape-swagger", "~>0.6.0"
   gem "rake", "~>10.1.0"
   gem "pry"
   gem "awesome_print"
   gem "better_errors"
   gem "binding_of_caller"
-  gem "rerun"
-  gem "guard"
-  gem "guard-rspec"
+  gem "rerun", "~>0.8.1"
+  gem "guard", "~>1.8.1"
+  gem "guard-rspec", "~>3.0.2"
 end
 
 group :testing do

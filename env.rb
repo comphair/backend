@@ -1,6 +1,6 @@
 require "grape"
 require "active_record"
-require "validates_timeliness"
+require "activevalidators"
 require "geocoder"
 
 require "./app/api/base"

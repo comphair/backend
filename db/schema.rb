@@ -17,15 +17,19 @@ ActiveRecord::Schema.define(version: 20131001124919) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
-    t.integer "store_id",                 null: false
-    t.string  "first_name",               null: false
-    t.string  "last_name",                null: false
-    t.string  "street",                   null: false
-    t.string  "zipcode",                  null: false
-    t.string  "city",                     null: false
-    t.string  "country",                  null: false
-    t.float   "latitude",   default: 0.0, null: false
-    t.float   "longitude",  default: 0.0, null: false
+    t.integer "store_id",                        null: false
+    t.string  "first_name",                      null: false
+    t.string  "last_name",                       null: false
+    t.string  "street",                          null: false
+    t.string  "street_additional"
+    t.string  "zipcode",                         null: false
+    t.string  "city",                            null: false
+    t.string  "state",                           null: false
+    t.string  "country",                         null: false
+    t.string  "email",                           null: false
+    t.string  "phone",                           null: false
+    t.float   "latitude",          default: 0.0, null: false
+    t.float   "longitude",         default: 0.0, null: false
   end
 
   create_table "appointments", force: true do |t|
