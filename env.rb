@@ -13,18 +13,19 @@ env = ENV["ENV"] ||= "development"
 
 ActiveRecord::Base.establish_connection(YAML.load(File.read("config/database.yml"))[env])
 
+if ["development", "testing"].include? env
+  require "pry"
+  require "awesome_print"
+  require "factory_girl"
+  FactoryGirl.find_definitions
+end
+
 case env
 when "development"
   require "grape-swagger"
-  require "pry"
-  require "awesome_print"
   require "better_errors"
   require "sidekiq/web"
-  require "factory_girl"
-  FactoryGirl.find_definitions
 when "testing"
   require "rack/test"
   require "database_cleaner"
-  require "factory_girl"
-  FactoryGirl.find_definitions
 end
