@@ -5,6 +5,7 @@ module API
       super
       subclass.instance_eval do
         format :json
+        formatter :json, Grape::Formatter::ActiveModelSerializers
       end
     end
 

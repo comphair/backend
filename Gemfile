@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "grape"
+gem "grape-active_model_serializers"
 gem "activerecord", "~>3.2.14"
 gem "activevalidators"
 gem "pg"
@@ -8,7 +9,7 @@ gem "sidekiq"
 gem "geocoder"
 
 group :development do
-  gem 'sinatra' # needed for sidekiq
+  gem "sinatra" # needed for sidekiq
   gem "grape-swagger", "~>0.6.0"
   gem "rake", "~>10.1.0"
   gem "pry"

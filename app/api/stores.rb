@@ -18,7 +18,7 @@ class API::Stores < API::Base
     addresses.each do |address|
       stores.push address.store
     end
-    stores.as_json(include: :address)
+    stores
   end
 
 end

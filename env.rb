@@ -1,4 +1,5 @@
 require "grape"
+require "grape-active_model_serializers"
 require "active_record"
 require "activevalidators"
 require "geocoder"
@@ -6,6 +7,7 @@ require "geocoder"
 require "./app/api/base"
 
 Dir["#{File.dirname(__FILE__)}/app/**/*.rb"].each {|f| require f}
+Dir["#{File.dirname(__FILE__)}/config/initializers/*.rb"].each {|f| require f}
 
 env = ENV["ENV"] ||= "development"
 
@@ -20,5 +22,5 @@ when "development"
   require "sidekiq/web"
 when "testing"
   require "rack/test"
-  require 'database_cleaner'
+  require "database_cleaner"
 end

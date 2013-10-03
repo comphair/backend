@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (3.2.14)
       activesupport (= 3.2.14)
       builder (~> 3.0.0)
@@ -55,6 +57,9 @@ GEM
       rack-accept
       rack-mount
       virtus
+    grape-active_model_serializers (1.0.1)
+      active_model_serializers (>= 0.8.1)
+      grape (~> 0.3)
     grape-swagger (0.6.0)
       grape (>= 0.2.0)
       kramdown
@@ -152,6 +157,7 @@ DEPENDENCIES
   database_cleaner
   geocoder
   grape
+  grape-active_model_serializers
   grape-swagger (~> 0.6.0)
   guard (~> 1.8.1)
   guard-rspec (~> 3.0.2)
