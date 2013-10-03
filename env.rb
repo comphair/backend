@@ -23,4 +23,6 @@ when "development"
 when "testing"
   require "rack/test"
   require "database_cleaner"
+  require "factory_girl"
+  FactoryGirl.find_definitions
 end

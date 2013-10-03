@@ -44,6 +44,8 @@ GEM
     descendants_tracker (0.0.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
     ffi (1.9.0)
     formatador (0.2.4)
     geocoder (1.1.8)
@@ -155,6 +157,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   database_cleaner
+  factory_girl
   geocoder
   grape
   grape-active_model_serializers

@@ -23,6 +23,7 @@ end
 
 group :testing do
   gem "database_cleaner"
+  gem "factory_girl"
   gem "rack-test"
   gem "rspec"
 end
