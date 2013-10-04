@@ -24,7 +24,8 @@ class API::Stores < API::Base
       store.distance = address.distance
       stores << store unless filtered_haircuts.empty?
     end
-    stores.sort_by! { |store| - store.rating }
+    stores = stores.sort_by! { |store| - store.rating }
+    stores = stores.sort_by! { |store| store.distance }
   end
 
 end

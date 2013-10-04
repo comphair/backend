@@ -8,13 +8,14 @@ class API::Ratings < API::Base
     requires :comment, type: String, desc: "Comment"
   end
   post 'ratings' do
-    Rating.create!({
+    rating = Rating.create!({
       store_id: params[:store_id],
       customer_id: params[:customer_id],
       value: params[:value],
       comment: params[:comment]
       })
     RatingsWorker.perform_async(params[:store_id])
+    rating
   end
 
 end

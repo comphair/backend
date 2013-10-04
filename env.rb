@@ -2,7 +2,6 @@ require "grape"
 require "grape-active_model_serializers"
 require "active_record"
 require "activevalidators"
-require "sidekiq"
 require "geocoder"
 
 env = ENV["ENV"] ||= "development"
@@ -22,6 +21,7 @@ when "development"
   require "sidekiq/web"
 when "testing"
   require "rack/test"
+  require "sidekiq"
   require "database_cleaner"
 end
 
@@ -29,11 +29,11 @@ ActiveRecord::Base.establish_connection(YAML.load(File.read("config/database.yml
 
 require "./app/api/base"
 
+Dir["#{File.dirname(__FILE__)}/app/workers/*.rb"].each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/app/api/*.rb"].each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/app/api/serializers/*.rb"].each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/app/helpers/*.rb"].each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/app/models/*.rb"].each {|f| require f}
-Dir["#{File.dirname(__FILE__)}/app/workers/*.rb"].each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/config/initializers/*.rb"].each {|f| require f}
 
 if env == "development"

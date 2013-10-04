@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :store do
     title         "Teststore"
     description   { "Description of #{title}" }
-    rating        4.5
+    rating        0
     after(:build) do |store|
       store.address = FactoryGirl.build(:address, store: store) unless store.address
       store.schedule = FactoryGirl.build(:schedule, store: store) unless store.schedule
