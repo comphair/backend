@@ -47,26 +47,56 @@ describe API::Stores do
         }
       }].each do |store|
         store[:address] = FactoryGirl.build(:address, store[:address])
-        store[:haircuts] = FactoryGirl.build_list(:haircut, 5, {
+        store[:haircuts] = FactoryGirl.build_list(:haircut, 3, {
           name: "Men Standard",
           duration: 20,
           price: 14.99,
           for_men: true
           })
+        store[:haircuts].concat FactoryGirl.build_list(:haircut, 3, {
+          name: "Women Standard",
+          duration: 20,
+          price: 14.99,
+          for_men: false
+          })
         FactoryGirl.create(:store, store)
       end
     end
 
-    it "should return stores near (40.780056, -73.946570)" do
-      expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/basic.json')).read
-      get "/stores", {
-        coordinate: {
-          latitude: 40.780056,
-          longitude: -73.946570
-        }
-      }
-      expect(last_response.status).to be 200
-      expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+    it "should return stores near" do
+
+      context "(40.780056, -73.946570)" do
+
+        context "for men" do
+          expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/basic_for_men.json')).read
+          get "/stores", {
+            coordinate: {
+              latitude: 40.780056,
+              longitude: -73.946570
+            },
+            for_men: true
+          }
+          ap JSON.parse(last_response.body)
+          expect(last_response.status).to be 200
+          expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+        end
+
+        context "for women" do
+          expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/basic_for_women.json')).read
+          get "/stores", {
+            coordinate: {
+              latitude: 40.780056,
+              longitude: -73.946570
+            },
+            for_men: false
+          }
+          ap JSON.parse(last_response.body)
+          expect(last_response.status).to be 200
+          expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+        end
+
+      end
+
     end
 
   end

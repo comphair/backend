@@ -15,6 +15,7 @@ ActiveRecord::Base.establish_connection(YAML.load(File.read("config/database.yml
 
 if ["development", "testing"].include? env
   require "pry"
+  require "binding_of_caller"
   require "awesome_print"
   require "factory_girl"
   FactoryGirl.find_definitions

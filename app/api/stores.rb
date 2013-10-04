@@ -6,34 +6,25 @@ class API::Stores < API::Base
       requires :latitude, type: Float, desc: "Latitude coordinate"
       requires :longitude, type: Float, desc: "Longitude coordinate"
     end
+    requires :for_men, type: Boolean, desc: "Looking for stores with men haircut or not"
     optional :date, type: Date, desc: "Specific day or start day for range query"
     optional :end_date, type: Date, desc: "End day for range query"
-    optional :for_men, type: Boolean, desc: "Looking for stores with men haircut or not"
   end
   get 'stores' do
     location = [params[:coordinate][:latitude], params[:coordinate][:longitude]]
-    radius = 1
-    addresses = Address.includes(store: :haircuts).near(location, radius)
+    addresses = Address.includes(store: :haircuts).near(location, 1) # 1 mile radius
     stores = []
     addresses.each do |address|
-      store = address.store.attributes
-      # store = address.store
-
+      store = address.store
       filtered_haircuts = []
-      # store.haircuts.each do |haircut|
-      address.store.haircuts.each do |haircut|
-        unless params.has_key?("for_men") and haircut.for_men != params[:for_men]
-          filtered_haircuts << haircut.attributes
-        end
+      store.haircuts.each do |haircut|
+        filtered_haircuts << haircut if haircut.for_men == params[:for_men]
       end
       # store.haircuts = filtered_haircuts
-      store["haircuts"] = filtered_haircuts
-
-      store["distance"] = address.distance
-      # store.distance = address.distance
-      stores << store
+      store.distance = address.distance
+      stores << store unless filtered_haircuts.empty?
     end
-    stores
+    stores.sort_by! { |store| - store.rating }
   end
 
 end
