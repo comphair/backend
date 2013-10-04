@@ -19,6 +19,7 @@ group :development do
   gem "rerun", "~>0.8.1"
   gem "guard", "~>1.8.1"
   gem "guard-rspec", "~>3.0.2"
+  gem "racksh"
 end
 
 group :testing do

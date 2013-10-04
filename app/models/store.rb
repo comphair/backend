@@ -10,7 +10,7 @@ class Store < ActiveRecord::Base
 
   has_many :ratings
   has_many :invoices
-  has_many :haircuts
+  has_many :haircuts, autosave: false
   has_one :schedule
   has_one :address
 

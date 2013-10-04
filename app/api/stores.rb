@@ -13,11 +13,25 @@ class API::Stores < API::Base
   get 'stores' do
     location = [params[:coordinate][:latitude], params[:coordinate][:longitude]]
     radius = 1
-    addresses = Address.includes(:store).near(location, radius)
+    addresses = Address.includes(store: :haircuts).near(location, radius)
     stores = []
     addresses.each do |address|
-      address.store.distance = address.distance
-      stores.push address.store
+      store = address.store.attributes
+      # store = address.store
+
+      filtered_haircuts = []
+      # store.haircuts.each do |haircut|
+      address.store.haircuts.each do |haircut|
+        unless params.has_key?("for_men") and haircut.for_men != params[:for_men]
+          filtered_haircuts << haircut.attributes
+        end
+      end
+      # store.haircuts = filtered_haircuts
+      store["haircuts"] = filtered_haircuts
+
+      store["distance"] = address.distance
+      # store.distance = address.distance
+      stores << store
     end
     stores
   end
