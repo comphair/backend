@@ -1,6 +1,7 @@
 class Timeslot < ActiveRecord::Base
 
   validates :date, date: true
+  validates :schedule, presence: true, on: :update
   validate :do_it
 
   belongs_to :schedule
