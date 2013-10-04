@@ -14,6 +14,7 @@ class API::Ratings < API::Base
       value: params[:value],
       comment: params[:comment]
       })
+    RatingsWorker.perform_async(params[:store_id])
   end
 
 end

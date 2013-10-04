@@ -44,7 +44,7 @@ FactoryGirl.define do
   end
 
   factory :customer do
-
+    name  "John Doe"
   end
 
   factory :haircut do
@@ -52,6 +52,11 @@ FactoryGirl.define do
     duration  20
     price     14.99
     for_men   true
+  end
+
+  factory :rating do
+    value     5
+    comment   "This is a senseless comment."
   end
 
 end

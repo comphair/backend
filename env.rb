@@ -2,6 +2,7 @@ require "grape"
 require "grape-active_model_serializers"
 require "active_record"
 require "activevalidators"
+require "sidekiq"
 require "geocoder"
 
 env = ENV["ENV"] ||= "development"
