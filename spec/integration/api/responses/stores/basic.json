@@ -1,0 +1,39 @@
+[{
+	"title": "Samar Spa \u0026 salon",
+	"description": "Description of Samar Spa \u0026 salon",
+	"rating": 5.0,
+	"distance": "9.81875190767056e-13",
+	"address": {
+		"first_name": "John",
+		"last_name": "Doe",
+		"street": "1758 1st Ave",
+		"street_additional": "96 E 7th St",
+		"zipcode": "10128",
+		"city": "New York",
+		"state": "NY",
+		"country": "United States",
+		"phone": "+1 201-369-7000"
+	},
+	"schedule": {
+		"timeslots": []
+	}
+}, {
+	"title": "Yves Durif Salon",
+	"description": "Description of Yves Durif Salon",
+	"rating": 3.0,
+	"distance": "0.955709268872731",
+	"address": {
+		"first_name": "John",
+		"last_name": "Doe",
+		"street": "35 E 76th St",
+		"street_additional": "96 E 7th St",
+		"zipcode": "10021",
+		"city": "New York",
+		"state": "NY",
+		"country": "United States",
+		"phone": "+1 201-369-7000"
+	},
+	"schedule": {
+		"timeslots": []
+	}
+}]

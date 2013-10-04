@@ -52,6 +52,7 @@ describe API::Stores do
     end
 
     it "should return stores near (40.780056, -73.946570)" do
+      expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/basic.json')).read
       get "/stores", {
         coordinate: {
           latitude: 40.780056,
@@ -59,45 +60,7 @@ describe API::Stores do
         }
       }
       expect(last_response.status).to be 200
-      expect(JSON.parse(last_response.body)).to eq([{
-        "title" => "Samar Spa & salon",
-        "description" => "Description of Samar Spa & salon",
-        "rating" => 5.0,
-        "distance"=>"9.81875190767056e-13",
-        "address" => {
-          "first_name" => "John",
-          "last_name" => "Doe",
-          "street" => "1758 1st Ave",
-          "street_additional" => "96 E 7th St",
-          "zipcode" => "10128",
-          "city" => "New York",
-          "state" => "NY",
-          "country" => "United States",
-          "phone" => "+1 201-369-7000"
-        },
-        "schedule" => {
-          "timeslots" => []
-        }
-      }, {
-        "title" => "Yves Durif Salon",
-        "description" => "Description of Yves Durif Salon",
-        "rating" => 3.0,
-        "distance"=>"0.955709268872731",
-        "address" => {
-          "first_name" => "John",
-          "last_name" => "Doe",
-          "street" => "35 E 76th St",
-          "street_additional" => "96 E 7th St",
-          "zipcode" => "10021",
-          "city" => "New York",
-          "state" => "NY",
-          "country" => "United States",
-          "phone" => "+1 201-369-7000"
-        },
-        "schedule" => {
-          "timeslots" => []
-        }
-      }])
+      expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
     end
 
   end
