@@ -5,7 +5,7 @@ class CreateTimeslots < ActiveRecord::Migration
       t.belongs_to :schedule, null: false
       t.date :date, null: false
       t.integer :start_minutes, null: false
-      t.integer :start_minutes, null: false
+      t.integer :end_minutes, null: false
     end
   end
 

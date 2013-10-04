@@ -7,6 +7,7 @@ class API::Root < API::Base
   mount API::Appointments
 
   if ENV["ENV"] == "development"
+    mount API::Helpers::Timeslots
     API::Root.add_swagger_documentation mount_path: "/docs",
                                         hide_documentation_path: true
   end

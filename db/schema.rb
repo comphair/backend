@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20131001124919) do
     t.integer "schedule_id",   null: false
     t.date    "date",          null: false
     t.integer "start_minutes", null: false
+    t.integer "end_minutes",   null: false
   end
 
   create_table "transactions", force: true do |t|

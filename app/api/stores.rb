@@ -12,7 +12,7 @@ class API::Stores < API::Base
   end
   get 'stores' do
     location = [params[:coordinate][:latitude], params[:coordinate][:longitude]]
-    addresses = Address.includes(store: :haircuts).near(location, 1) # 1 mile radius
+    addresses = Address.includes(store: [:haircuts, schedule: :timeslots]).near(location, 1) # 1 mile radius
     stores = []
     addresses.each do |address|
       store = address.store
