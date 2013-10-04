@@ -63,6 +63,7 @@ describe API::Stores do
         "title" => "Samar Spa & salon",
         "description" => "Description of Samar Spa & salon",
         "rating" => 5.0,
+        "distance"=>"9.81875190767056e-13",
         "address" => {
           "first_name" => "John",
           "last_name" => "Doe",
@@ -81,6 +82,7 @@ describe API::Stores do
         "title" => "Yves Durif Salon",
         "description" => "Description of Yves Durif Salon",
         "rating" => 3.0,
+        "distance"=>"0.955709268872731",
         "address" => {
           "first_name" => "John",
           "last_name" => "Doe",

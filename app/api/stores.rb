@@ -16,6 +16,7 @@ class API::Stores < API::Base
     addresses = Address.includes(:store).near(location, radius)
     stores = []
     addresses.each do |address|
+      address.store.distance = address.distance
       stores.push address.store
     end
     stores
