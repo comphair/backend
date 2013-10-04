@@ -14,11 +14,11 @@ describe Address do
         state: "NY",
         country: "United States"
       })
-      address.latitude.should == 0
-      address.longitude.should == 0
-      address.valid?.should == true
-      address.latitude.should == 40.7143528
-      address.longitude.should == -74.0059731
+      expect(address.latitude).to eq 0
+      expect(address.longitude).to eq 0
+      expect(address.valid?).to be true
+      expect(address.latitude).to eq 40.7143528
+      expect(address.longitude).to eq -74.0059731
     end
 
   end

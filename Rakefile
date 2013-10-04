@@ -1,7 +1,6 @@
 require "./env"
 require 'active_record/schema_dumper'
 
-
 namespace :db do
 
   db_config = YAML::load(File.open('config/database.yml'))[ENV["ENV"]]

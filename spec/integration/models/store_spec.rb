@@ -7,9 +7,9 @@ describe "Store" do
     it "should create invoice if no invoice at all" do
       store = FactoryGirl.build(:store)
       store.save(validate: false)
-      store.invoices.should == []
-      store.valid?.should == true
-      store.invoices.first.timespan.should == Time.current_total_month
+      expect(store.invoices).to match_array []
+      expect(store.valid?).to be true
+      expect(store.invoices.first.timespan).to be Time.current_total_month
     end
 
   end
