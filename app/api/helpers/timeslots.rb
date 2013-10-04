@@ -1,6 +1,6 @@
 class API::Helpers::Timeslots < API::Base
 
-  desc "Create a new appointment"
+  desc "Create a new timeslot"
   params do
     requires :schedule_id, type: Integer, desc: "Schedule id"
     requires :date, type: Date, desc: "Date"

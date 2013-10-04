@@ -5,6 +5,7 @@ class API::Root < API::Base
   mount API::Stores
   mount API::Placekeepers
   mount API::Appointments
+  mount API::Ratings
 
   if ENV["ENV"] == "development"
     mount API::Helpers::Timeslots
