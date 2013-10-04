@@ -3,8 +3,9 @@ class CreateHaircuts < ActiveRecord::Migration
   def self.up
     create_table :haircuts do |t|
       t.belongs_to :store, null: false
-      t.decimal :price, null: false, default: 0
-      t.integer :duration, null: false, default: 0
+      t.string :name, null: false
+      t.float :price, null: false
+      t.integer :duration, null: false
       t.boolean :for_men, null: false
     end
   end

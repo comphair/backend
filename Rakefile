@@ -37,11 +37,14 @@ namespace :db do
   desc "Seed the database"
   task :seed => :connect do
     seed_data = YAML::load(File.open('db/seeds.yml')).recursive_symbolize_keys!
-    seed_data[:stores].each do |store|
-      store[:address] = FactoryGirl.build(:address, store[:address])
-      FactoryGirl.create(:store, store)
+    seed_data[:stores].each do |store_data|
+      store_data[:address] = FactoryGirl.build(:address, store_data[:address])
+      store_data[:haircuts].each_with_index do |haircut_data, index|
+        store_data[:haircuts][index] = FactoryGirl.build(:haircut, haircut_data)
+      end
+      store = FactoryGirl.create(:store, store_data)
     end
-    seed_data[:customers].each { |customer| FactoryGirl.create(:customer, customer) }
+    seed_data[:customers].each { |customer_data| FactoryGirl.create(:customer, customer_data) }
     puts "Database seeded."
   end
 

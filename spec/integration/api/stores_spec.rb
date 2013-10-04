@@ -47,6 +47,12 @@ describe API::Stores do
         }
       }].each do |store|
         store[:address] = FactoryGirl.build(:address, store[:address])
+        store[:haircuts] = FactoryGirl.build_list(:haircut, 5, {
+          name: "Men Standard",
+          duration: 20,
+          price: 14.99,
+          for_men: true
+          })
         FactoryGirl.create(:store, store)
       end
     end

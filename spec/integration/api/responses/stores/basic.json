@@ -16,7 +16,38 @@
 	},
 	"schedule": {
 		"timeslots": []
-	}
+	},
+	"haircuts": [{
+		"id": 1,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}, {
+		"id": 2,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}, {
+		"id": 3,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}, {
+		"id": 4,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}, {
+		"id": 5,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}]
 }, {
 	"title": "Yves Durif Salon",
 	"description": "Description of Yves Durif Salon",
@@ -35,5 +66,36 @@
 	},
 	"schedule": {
 		"timeslots": []
-	}
+	},
+	"haircuts": [{
+		"id": 11,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}, {
+		"id": 12,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}, {
+		"id": 13,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}, {
+		"id": 14,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}, {
+		"id": 15,
+		"name": "Men Standard",
+		"price": 14.99,
+		"duration": 20,
+		"for_men": true
+	}]
 }]

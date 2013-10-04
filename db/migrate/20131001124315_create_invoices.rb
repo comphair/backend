@@ -5,7 +5,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.belongs_to :store, null: false
       t.integer :timespan, null: false
       t.integer :number_transactions, null: false, default: 0
-      t.decimal :total, null: false, default: 0
+      t.float :total, null: false, default: 0
     end
   end
 

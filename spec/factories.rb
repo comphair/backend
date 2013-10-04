@@ -7,6 +7,7 @@ FactoryGirl.define do
     after(:build) do |store|
       store.address = FactoryGirl.build(:address, store: store) unless store.address
       store.schedule = FactoryGirl.build(:schedule, store: store) unless store.schedule
+      store.haircuts = FactoryGirl.build_list(:haircut, 5, store: store) if store.haircuts.empty?
     end
     before(:create) do |store|
       store.save!(validate:false)
@@ -14,6 +15,7 @@ FactoryGirl.define do
     after(:create) do |store|
       store.address.save!
       store.schedule.save!
+      store.haircuts.each { |haircut| haircut.save! }
     end
   end
 
@@ -43,6 +45,13 @@ FactoryGirl.define do
 
   factory :customer do
 
+  end
+
+  factory :haircut do
+    name      "Men Standard"
+    duration  20
+    price     14.99
+    for_men   true
   end
 
 end

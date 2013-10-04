@@ -45,17 +45,18 @@ ActiveRecord::Schema.define(version: 20131001124919) do
   end
 
   create_table "haircuts", force: true do |t|
-    t.integer "store_id",               null: false
-    t.decimal "price",    default: 0.0, null: false
-    t.integer "duration", default: 0,   null: false
-    t.boolean "for_men",                null: false
+    t.integer "store_id", null: false
+    t.string  "name",     null: false
+    t.float   "price",    null: false
+    t.integer "duration", null: false
+    t.boolean "for_men",  null: false
   end
 
   create_table "invoices", force: true do |t|
     t.integer "store_id",                          null: false
     t.integer "timespan",                          null: false
     t.integer "number_transactions", default: 0,   null: false
-    t.decimal "total",               default: 0.0, null: false
+    t.float   "total",               default: 0.0, null: false
   end
 
   create_table "placekeepers", force: true do |t|
@@ -91,8 +92,8 @@ ActiveRecord::Schema.define(version: 20131001124919) do
   create_table "transactions", force: true do |t|
     t.integer "appointment_id",               null: false
     t.integer "invoice_id",                   null: false
-    t.decimal "total",                        null: false
-    t.decimal "tip",            default: 0.0, null: false
+    t.float   "total",                        null: false
+    t.float   "tip",            default: 0.0, null: false
   end
 
 end

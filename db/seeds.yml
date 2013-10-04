@@ -7,6 +7,27 @@ stores:
       city: "New York"
       state: "NY"
       country: "United States"
+    haircuts:
+      - name: "Men Basic"
+        duration: 20
+        price: 14.99
+        for_men: true
+      - name: "Men Extra"
+        duration: 30
+        price: 24.99
+        for_men: true
+      - name: "Women Standard"
+        duration: 30
+        price: 34.99
+        for_men: false
+      - name: "Women Extra"
+        duration: 35
+        price: 39.99
+        for_men: false
+      - name: "Women Extra Good"
+        duration: 55
+        price: 79.99
+        for_men: false
   - title: "Jean Louis David"
     rating: 4
     address:
@@ -15,6 +36,27 @@ stores:
       city: "New York"
       state: "NY"
       country: "United States"
+    haircuts:
+      - name: "Men Basic"
+        duration: 20
+        price: 14.99
+        for_men: true
+      - name: "Men Extra"
+        duration: 30
+        price: 24.99
+        for_men: true
+      - name: "Women Standard"
+        duration: 30
+        price: 34.99
+        for_men: false
+      - name: "Women Extra"
+        duration: 35
+        price: 39.99
+        for_men: false
+      - name: "Women Extra Good"
+        duration: 55
+        price: 79.99
+        for_men: false
   - title: "Yves Durif Salon"
     rating: 3
     address:
@@ -23,6 +65,27 @@ stores:
       city: "New York"
       state: "NY"
       country: "United States"
+    haircuts:
+      - name: "Men Basic"
+        duration: 20
+        price: 14.99
+        for_men: true
+      - name: "Men Extra"
+        duration: 30
+        price: 24.99
+        for_men: true
+      - name: "Women Standard"
+        duration: 30
+        price: 34.99
+        for_men: false
+      - name: "Women Extra"
+        duration: 35
+        price: 39.99
+        for_men: false
+      - name: "Women Extra Good"
+        duration: 55
+        price: 79.99
+        for_men: false
   - title: "Samar Spa & salon"
     rating: 2
     address:
@@ -31,6 +94,27 @@ stores:
       city: "New York"
       state: "NY"
       country: "United States"
+    haircuts:
+      - name: "Men Basic"
+        duration: 20
+        price: 14.99
+        for_men: true
+      - name: "Men Extra"
+        duration: 30
+        price: 24.99
+        for_men: true
+      - name: "Women Standard"
+        duration: 30
+        price: 34.99
+        for_men: false
+      - name: "Women Extra"
+        duration: 35
+        price: 39.99
+        for_men: false
+      - name: "Women Extra Good"
+        duration: 55
+        price: 79.99
+        for_men: false
 customers:
   - name: "John Doe"
   - name: "Dohn Yoe"
