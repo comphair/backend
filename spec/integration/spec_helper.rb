@@ -1,5 +1,4 @@
 require "./spec/spec_helper"
-require "./env"
 
 DatabaseCleaner.strategy = :truncation
 
