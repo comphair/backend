@@ -9,3 +9,10 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+# disable sidekiq calls
+module Sidekiq::Worker::ClassMethods
+  def perform_async(*args)
+    nil
+  end
+end

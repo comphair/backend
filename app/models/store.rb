@@ -8,6 +8,8 @@ class Store < ActiveRecord::Base
 
   before_validation :check_invoices
 
+  after_save :update_rating, :if => :title_changed?
+
   has_many :ratings
   has_many :invoices
   has_many :haircuts
@@ -20,6 +22,10 @@ class Store < ActiveRecord::Base
         timespan: Time.current_total_month
         })
     end
+  end
+
+  def update_rating
+    YelpStoreWorker.perform_async(id)
   end
 
 end

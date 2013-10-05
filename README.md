@@ -9,7 +9,7 @@ $ rake db:reset
 
 ## Server
 ```sh
-$ sidekiq -r sidekiq.rb
+$ sidekiq -r ./env.rb
 $ rackup # or
 $ rerun rackup
 ```
