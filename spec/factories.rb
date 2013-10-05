@@ -59,4 +59,8 @@ FactoryGirl.define do
     comment   "This is a senseless comment."
   end
 
+  factory :timeslot do
+
+  end
+
 end

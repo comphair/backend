@@ -6,6 +6,7 @@ require "active_record"
 require "activevalidators"
 require "geocoder"
 require "net/http"
+require "date"
 
 if ["development", "testing"].include? env
   require "pry"
