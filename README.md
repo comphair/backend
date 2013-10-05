@@ -24,6 +24,10 @@ $ guard
 ## Tools
 * [Brew](http://brew.sh/)
 * [rbenv](https://github.com/sstephenson/rbenv)
-* [Bundler](http://bundler.io/)
 * [Redis](http://redis.io/)
 * [PostgreSQL](http://postgresapp.com/)
+
+## Global gems
+```sh
+$ gem install bundler
+```

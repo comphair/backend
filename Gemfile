@@ -27,4 +27,5 @@ group :testing do
   gem "factory_girl"
   gem "rack-test"
   gem "rspec"
+  gem "simplecov"
 end

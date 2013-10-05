@@ -1,4 +1,6 @@
 ENV["ENV"] = "testing"
+require 'simplecov'
+SimpleCov.start
 
 require "./env"
 
