@@ -1,10 +1,11 @@
+env = ENV["ENV"] ||= "development"
+
 require "grape"
 require "grape-active_model_serializers"
 require "active_record"
 require "activevalidators"
 require "geocoder"
-
-env = ENV["ENV"] ||= "development"
+require "net/http"
 
 if ["development", "testing"].include? env
   require "pry"

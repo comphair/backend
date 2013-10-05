@@ -7,6 +7,7 @@ gem "activevalidators"
 gem "pg"
 gem "sidekiq"
 gem "geocoder"
+gem "yelpster"
 
 group :development do
   gem "sinatra" # needed for sidekiq

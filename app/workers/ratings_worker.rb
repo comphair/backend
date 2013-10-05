@@ -8,7 +8,7 @@ class RatingsWorker
       average += rating.value
     end
     store.rating = average / store.ratings.length.to_f
-    store.save
+    store.save!
   end
 
 end
