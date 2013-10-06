@@ -21,7 +21,7 @@ class API::Stores < API::Base
         filtered_haircuts << haircut if haircut.for_men == params[:for_men]
       end
       # store.haircuts = filtered_haircuts
-      store.distance = address.distance
+      store.distance = address.distance # trim precsion
       stores << store unless filtered_haircuts.empty?
     end
     stores = stores.sort_by! { |store| - store.rating }

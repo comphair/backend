@@ -41,7 +41,7 @@ GEM
     date_validator (0.7.0)
       activemodel (>= 3)
     debug_inspector (0.0.2)
-    descendants_tracker (0.0.1)
+    descendants_tracker (0.0.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     factory_girl (4.2.0)
