@@ -7,4 +7,10 @@ class Placekeeper < ActiveRecord::Base
   belongs_to :haircut
   belongs_to :timeslot
 
+  after_initialize :generate_session_key
+
+  def generate_session_key
+    self.session_key = SecureRandom.uuid  unless self.session_key
+  end
+
 end
