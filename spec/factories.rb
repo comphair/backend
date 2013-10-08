@@ -63,4 +63,8 @@ FactoryGirl.define do
 
   end
 
+  factory :placekeeper do
+
+  end
+
 end

@@ -5,7 +5,9 @@ class Placekeeper < ActiveRecord::Base
   validates :haircut, presence: true
   validates :timeslot, presence: true
 
+  validate :within_timeslot
   validate :prevents_holes
+  validate :not_overlapping
 
   belongs_to :haircut
   belongs_to :timeslot
@@ -16,10 +18,13 @@ class Placekeeper < ActiveRecord::Base
     self.session_key = SecureRandom.uuid  unless self.session_key
   end
 
+  def within_timeslot
+    errors.add(:start_minutes, "must not be less than timeslot start_minutes")  if start_minutes < timeslot.start_minutes
+    errors.add(:start_minutes, "must be less to match timeslot")  if start_minutes + haircut.duration > timeslot.end_minutes
+  end
+
   def prevents_holes
     gap = start_minutes - timeslot.start_minutes
-    errors.add(:start_minutes, "must not be less than timeslot start_minutes")  if gap < 0
-
     all_haircuts = haircut.store.haircuts
     has_a_hole = true
     all_haircuts.each do |haircut_to_check|
@@ -29,6 +34,21 @@ class Placekeeper < ActiveRecord::Base
       end
     end
     errors.add(:start_minutes, "must align to all haircuts (hole prevention)")  if has_a_hole
+  end
+
+  def not_overlapping
+    other_placekeepers = timeslot.placekeepers.reject { |placekeeper| placekeeper == self }
+    other_placekeepers.each do |other_placekeeper|
+      other_start_minutes = other_placekeeper.start_minutes
+      other_end_minutes = other_start_minutes + other_placekeeper.haircut.duration
+      if other_start_minutes <= start_minutes and start_minutes < other_end_minutes
+        errors.add(:start_minutes, "must not overlap other placekeeper")
+      end
+      own_end_minutes = start_minutes + haircut.duration
+      if other_start_minutes < own_end_minutes and own_end_minutes <= other_end_minutes
+        errors.add(:start_minutes, "must not overlap other placekeeper")
+      end
+    end
   end
 
 end

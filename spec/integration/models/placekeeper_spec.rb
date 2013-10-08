@@ -25,6 +25,47 @@ describe Placekeeper do
     timeslot
   end
 
+  describe "within timeslot" do
+
+    it "shouldn't be valid if starts before beginning" do
+      placekeeper = Placekeeper.new({
+        haircut: haircut,
+        timeslot: timeslot,
+        start_minutes: 990
+        })
+      expect(placekeeper.valid?).to be false
+    end
+
+    it "shouldn't be valid if beginns at ending" do
+      placekeeper = Placekeeper.new({
+        haircut: haircut,
+        timeslot: timeslot,
+        start_minutes: 1200
+        })
+      expect(placekeeper.valid?).to be false
+    end
+
+    it "should be valid if ends at ending" do
+      placekeeper = Placekeeper.new({
+        haircut: haircut,
+        timeslot: timeslot,
+        start_minutes: 1190
+        })
+      expect(placekeeper.valid?).to be true
+    end
+
+    it "shouldn't be valid if takes longer than ending" do
+      lenghty_haircut = store.haircuts.where(duration: 25).first
+      placekeeper = Placekeeper.new({
+        haircut: lenghty_haircut,
+        timeslot: timeslot,
+        start_minutes: 1180
+        })
+      expect(placekeeper.valid?).to be false
+    end
+
+  end
+
   describe "hole prevention" do
 
     it "should be valid if starts at beginning" do
@@ -34,15 +75,6 @@ describe Placekeeper do
         start_minutes: 1000
         })
       expect(placekeeper.valid?).to be true
-    end
-
-    it "shouldn't be valid if starts before beginning" do
-      placekeeper = Placekeeper.new({
-        haircut: haircut,
-        timeslot: timeslot,
-        start_minutes: 990
-        })
-      expect(placekeeper.valid?).to be false
     end
 
     it "shouldn't be valid if starts one minute after beginning" do
@@ -77,6 +109,50 @@ describe Placekeeper do
         haircut: haircut,
         timeslot: timeslot,
         start_minutes: 1042
+        })
+      expect(placekeeper.valid?).to be true
+    end
+
+  end
+
+  describe "not overlapping" do
+
+    it "shouldn't be valid if there is already a placekeeper with same start_minutes" do
+      timeslot.placekeepers << FactoryGirl.create(:placekeeper, haircut: haircut, timeslot: timeslot, start_minutes: 1000)
+      placekeeper = Placekeeper.new({
+        haircut: haircut,
+        timeslot: timeslot,
+        start_minutes: 1000
+        })
+      expect(placekeeper.valid?).to be false
+    end
+
+    it "shouldn't be valid if there is already a placekeeper overlapping" do
+      timeslot.placekeepers << FactoryGirl.create(:placekeeper, haircut: haircut, timeslot: timeslot, start_minutes: 1000)
+      placekeeper = Placekeeper.new({
+        haircut: haircut,
+        timeslot: timeslot,
+        start_minutes: 1000
+        })
+      expect(placekeeper.valid?).to be false
+    end
+
+    it "should be valid after previous placekeeper" do
+      timeslot.placekeepers << FactoryGirl.create(:placekeeper, haircut: haircut, timeslot: timeslot, start_minutes: 1000)
+      placekeeper = Placekeeper.new({
+        haircut: haircut,
+        timeslot: timeslot,
+        start_minutes: 1010
+        })
+      expect(placekeeper.valid?).to be true
+    end
+
+    it "should be valid before next placekeeper" do
+      timeslot.placekeepers << FactoryGirl.create(:placekeeper, haircut: haircut, timeslot: timeslot, start_minutes: 1010)
+      placekeeper = Placekeeper.new({
+        haircut: haircut,
+        timeslot: timeslot,
+        start_minutes: 1000
         })
       expect(placekeeper.valid?).to be true
     end

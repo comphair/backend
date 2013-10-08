@@ -7,7 +7,7 @@ class Timeslot < ActiveRecord::Base
 
   belongs_to :schedule
   has_many :appointments
-  has_many :placekeeper
+  has_many :placekeepers
 
   def not_overlapping
     errors.add(:start_minutes, "must be smaller than end_minutes")  if start_minutes >= end_minutes
