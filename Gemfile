@@ -7,7 +7,7 @@ gem "activevalidators"
 gem "pg"
 gem "sidekiq"
 gem "geocoder"
-gem "stripe", :git => "https://github.com/stripe/stripe-ruby"
+gem "stripe"
 
 group :development do
   gem "sinatra" # needed for sidekiq
