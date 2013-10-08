@@ -17,7 +17,18 @@ class Placekeeper < ActiveRecord::Base
   end
 
   def prevents_holes
+    gap = start_minutes - timeslot.start_minutes
+    errors.add(:start_minutes, "must not be less than timeslot start_minutes")  if gap < 0
 
+    all_haircuts = haircut.store.haircuts
+    has_a_hole = true
+    all_haircuts.each do |haircut_to_check|
+      if gap % haircut_to_check.duration == 0
+        has_a_hole = false
+        break
+      end
+    end
+    errors.add(:start_minutes, "must align to all haircuts (hole prevention)")  if has_a_hole
   end
 
 end
