@@ -36,11 +36,11 @@ namespace :db do
   desc "Seed the database"
   task :seed => :connect do
     # disable sidekiq calls
-    # module Sidekiq::Worker::ClassMethods
-    #   def perform_async(*args)
-    #     nil
-    #   end
-    # end
+    module Sidekiq::Worker::ClassMethods
+      def perform_async(*args)
+        nil
+      end
+    end
     seed_data = YAML::load(File.open('db/seeds.yml')).recursive_symbolize_keys!
     seed_data[:stores].each do |store_data|
       store_data[:address] = FactoryGirl.build(:address, store_data[:address])

@@ -6,6 +6,7 @@ class API::Appointments < API::Base
     optional :comment, type: String, desc: "Comment"
   end
   post 'appointments' do
+    placekeeper = Placekeeper.where(session_key: params[:session_key]).first!
     # TODO transaction
     begin
       charge = Stripe::Charge.create({
@@ -23,10 +24,17 @@ class API::Appointments < API::Base
     rescue Stripe::CardError => e
       # The card has been declined
     end
-    # Appointment.create!({
-    #   start_minutes: 1,
-    #   comment: params[:comment]
-    # })
+
+    transaction = Transaction.new
+
+    Appointment.create!({
+      start_minutes: placekeeper.start_minutes,
+      haircut: placekeeper.haircut,
+      timeslot: placekeeper.timeslot,
+      transaction: transaction,
+      customer: nil,
+      comment: params[:comment]
+    })
   end
 
 end
