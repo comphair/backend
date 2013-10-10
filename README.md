@@ -1,4 +1,4 @@
-salon-backend [![Build Status](https://travis-ci.org/comphair/backend.png?branch=master)](https://travis-ci.org/comphair/backend)
+comphair backend [![Build Status](https://travis-ci.org/comphair/backend.png?branch=master)](https://travis-ci.org/comphair/backend)
 =============
 
 ## Install

@@ -1,5 +1,9 @@
+env:
+- ENV=testing
 rvm:
 - 2.0.0
+before_script:
+- psql -c 'create database comphair-test;' -U postgres
 script:
-- rake
-- bundle exec rspec
+- rake db:reset
+- rspec

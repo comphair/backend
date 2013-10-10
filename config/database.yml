@@ -3,10 +3,10 @@ development:
   adapter: "postgresql"
   encoding: utf-8
   pool: 25
-  database: "salon"
+  database: "comphair"
 testing:
   host: "localhost"
   adapter: "postgresql"
   encoding: utf-8
   pool: 25
-  database: "salon-test"
+  database: "comphair-test"
