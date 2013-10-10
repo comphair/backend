@@ -1,6 +1,10 @@
 ENV["ENV"] = "testing"
-require 'simplecov'
+
+require "simplecov"
+require "coveralls"
+
 SimpleCov.start
+Coveralls.wear!
 
 require "./env"
 

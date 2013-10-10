@@ -29,4 +29,5 @@ group :testing do
   gem "rack-test"
   gem "rspec"
   gem "simplecov"
+  gem "coveralls"
 end

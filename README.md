@@ -1,4 +1,4 @@
-comphair backend [![Build Status](https://travis-ci.org/comphair/backend.png?branch=master)](https://travis-ci.org/comphair/backend)
+comphair backend [![Build Status](https://travis-ci.org/comphair/backend.png?branch=master)](https://travis-ci.org/comphair/backend) [![Code Climate](https://codeclimate.com/repos/52570a4813d63740d20010b5/badges/826fb9dd696ea94a96fd/gpa.png)](https://codeclimate.com/repos/52570a4813d63740d20010b5/feed)
 =============
 
 ## Install
