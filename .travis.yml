@@ -7,4 +7,4 @@ before_script:
 - bundle install
 - rake db:reset
 script:
-- rspec
+- bundle exec rspec
