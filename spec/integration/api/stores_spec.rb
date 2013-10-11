@@ -84,7 +84,8 @@ describe API::Stores do
             latitude: 40.780056,
             longitude: -73.946570
           },
-          for_men: true
+          for_men: true,
+          date: Date.new
         }
         expect(last_response.status).to be 200
         expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
@@ -97,7 +98,8 @@ describe API::Stores do
             latitude: 40.780056,
             longitude: -73.946570
           },
-          for_men: false
+          for_men: false,
+          date: Date.new
         }
         expect(last_response.status).to be 200
         expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))

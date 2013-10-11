@@ -11,7 +11,7 @@ class API::Stores < API::Base
       requires :longitude, type: Float, desc: "Longitude coordinate"
     end
     requires :for_men, type: Boolean, desc: "Looking for stores with men haircut or not"
-    optional :date, type: Date, desc: "Specific day or start day for range query"
+    requires :date, type: Date, desc: "Specific day or start day for range query"
     optional :end_date, type: Date, desc: "End day for range query"
   end
   get 'stores' do
