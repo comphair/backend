@@ -86,7 +86,8 @@ describe API::Stores do
             longitude: -73.946570
           },
           for_men: true,
-          date: Date.new
+          start_date: Date.new,
+          end_date: Date.new
         }
         expect(last_response.status).to be 200
         expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
@@ -100,7 +101,8 @@ describe API::Stores do
             longitude: -73.946570
           },
           for_men: false,
-          date: Date.new
+          start_date: Date.new,
+          end_date: Date.new
         }
         expect(last_response.status).to be 200
         expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
