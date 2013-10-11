@@ -85,7 +85,7 @@ describe API::Stores do
       end
     end
 
-    context "when searching 2011 Nov 11" do
+    context "when searching for 2011 Nov 11" do
 
       before(:each) do
         (1..4).each do |id|
@@ -129,6 +129,20 @@ describe API::Stores do
           }
           expect(last_response.status).to be 200
           expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+        end
+
+        it "should find nothing" do
+          get "/stores", {
+            coordinate: {
+              latitude: 40.780056,
+              longitude: -73.946570
+            },
+            for_men: false,
+            start_date: Date.new(2011,11,12),
+            end_date: Date.new(2011,11,12)
+          }
+          expect(last_response.status).to be 200
+          expect(JSON.parse(last_response.body)).to eq([])
         end
 
       end

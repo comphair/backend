@@ -20,6 +20,7 @@ class API::Stores < API::Base
     near_stores = []
     stores = Store.includes(:address, :haircuts, stylists: { schedule: :timeslots })
                   .where(haircuts: { for_men: params[:for_men] })
+                  .where(timeslots: { date: params[:start_date]..params[:end_date] })
                   .order("rating DESC, haircuts.id ASC")
 
     stores.each do |store|
