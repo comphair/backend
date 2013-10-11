@@ -67,7 +67,7 @@ describe API::Stores do
           })
         store[:haircuts].concat FactoryGirl.build_list(:haircut, 3, {
           name: "Women Standard",
-          duration: 20,
+          duration: 25,
           price: 24.99,
           for_men: false
           })
@@ -90,19 +90,18 @@ describe API::Stores do
         expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
       end
 
-      # it "should find for women" do
-      #   expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/basic_for_women.json')).read
-      #   get "/stores", {
-      #     coordinate: {
-      #       latitude: 40.780056,
-      #       longitude: -73.946570
-      #     },
-      #     for_men: false
-      #   }
-      #   ap JSON.parse(last_response.body)
-      #   expect(last_response.status).to be 200
-      #   expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
-      # end
+      it "should find for women" do
+        expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/basic_for_women.json')).read
+        get "/stores", {
+          coordinate: {
+            latitude: 40.780056,
+            longitude: -73.946570
+          },
+          for_men: false
+        }
+        expect(last_response.status).to be 200
+        expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+      end
 
     end
 

@@ -1,0 +1,77 @@
+[{
+	"title": "Samar Spa & salon",
+	"description": "Samar Spa & salon",
+	"rating": 5.0,
+	"distance": 0.0,
+	"address": {
+		"first_name": "John",
+		"last_name": "Doe",
+		"street": "1758 1st Ave",
+		"street_additional": "96 E 7th St",
+		"zipcode": "10128",
+		"city": "New York",
+		"state": "NY",
+		"country": "United States",
+		"phone": "+1 201-369-7000"
+	},
+	"schedule": {
+		"timeslots": []
+	},
+	"haircuts": [{
+		"id": 4,
+		"name": "Women Standard",
+		"duration": 25,
+		"price": 24.99,
+		"for_men": false
+	}, {
+		"id": 5,
+		"name": "Women Standard",
+		"duration": 25,
+		"price": 24.99,
+		"for_men": false
+	}, {
+		"id": 6,
+		"name": "Women Standard",
+		"duration": 25,
+		"price": 24.99,
+		"for_men": false
+	}]
+}, {
+	"title": "Yves Durif Salon",
+	"description": "Yves Durif Salon",
+	"rating": 3.0,
+	"distance": 0.96,
+	"address": {
+		"first_name": "John",
+		"last_name": "Doe",
+		"street": "35 E 76th St",
+		"street_additional": "96 E 7th St",
+		"zipcode": "10021",
+		"city": "New York",
+		"state": "NY",
+		"country": "United States",
+		"phone": "+1 201-369-7000"
+	},
+	"schedule": {
+		"timeslots": []
+	},
+	"haircuts": [{
+		"id": 16,
+		"name": "Women Standard",
+		"duration": 25,
+		"price": 24.99,
+		"for_men": false
+	}, {
+		"id": 17,
+		"name": "Women Standard",
+		"duration": 25,
+		"price": 24.99,
+		"for_men": false
+	}, {
+		"id": 18,
+		"name": "Women Standard",
+		"duration": 25,
+		"price": 24.99,
+		"for_men": false
+	}]
+}]

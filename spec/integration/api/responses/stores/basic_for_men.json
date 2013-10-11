@@ -18,7 +18,7 @@
 		"timeslots": []
 	},
 	"haircuts": [{
-		"id": 3,
+		"id": 1,
 		"name": "Men Standard",
 		"duration": 20,
 		"price": 14.99,
@@ -30,7 +30,7 @@
 		"price": 14.99,
 		"for_men": true
 	}, {
-		"id": 1,
+		"id": 3,
 		"name": "Men Standard",
 		"duration": 20,
 		"price": 14.99,
@@ -56,7 +56,7 @@
 		"timeslots": []
 	},
 	"haircuts": [{
-		"id": 15,
+		"id": 13,
 		"name": "Men Standard",
 		"duration": 20,
 		"price": 14.99,
@@ -68,7 +68,7 @@
 		"price": 14.99,
 		"for_men": true
 	}, {
-		"id": 13,
+		"id": 15,
 		"name": "Men Standard",
 		"duration": 20,
 		"price": 14.99,
