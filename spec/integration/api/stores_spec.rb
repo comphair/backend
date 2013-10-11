@@ -6,6 +6,7 @@ describe API::Stores do
 
     before(:each) do
       [{
+        # id: 1,
         title: "Samar Spa & salon",
         description: "Samar Spa & salon",
         rating: 5,
@@ -19,6 +20,7 @@ describe API::Stores do
           country: "United States"
         }
       }, {
+        # id: 2,
         title: "Jean Louis David",
         description: "Jean Louis David",
         rating: 4,
@@ -32,6 +34,7 @@ describe API::Stores do
           country: "United States"
         }
       }, {
+        # id: 3,
         title: "Yves Durif Salon",
         description: "Yves Durif Salon",
         rating: 3,
@@ -45,6 +48,7 @@ describe API::Stores do
           country: "United States"
         }
       }, {
+        # id: 4,
         title: "Samar Spa & salon",
         description: "Samar Spa & salon",
         rating: 2,
@@ -73,39 +77,60 @@ describe API::Stores do
           })
         store = FactoryGirl.create(:store, store)
         store.stylists.each { |stylist| stylist.delete }
+        store.stylists << FactoryGirl.create(:stylist, {
+          store: store,
+          name: "Some Guy",
+          description: "Pick me!"
+          })
       end
     end
 
-    context "when searching near (40.780056, -73.946570)" do
+    context "when searching 2011 Nov 11" do
 
-      it "should find for men" do
-        expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/basic_for_men.json')).read
-        get "/stores", {
-          coordinate: {
-            latitude: 40.780056,
-            longitude: -73.946570
-          },
-          for_men: true,
-          start_date: Date.new,
-          end_date: Date.new
-        }
-        expect(last_response.status).to be 200
-        expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+      before(:each) do
+        (1..4).each do |id|
+          schedule = Store.find(id).stylists.first.schedule
+          schedule.timeslots << FactoryGirl.create(:timeslot, {
+            schedule: schedule,
+            date: Date.new(2011,11,11),
+            start_minutes: 0,
+            end_minutes: 1440
+            })
+        end
       end
 
-      it "should find for women" do
-        expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/basic_for_women.json')).read
-        get "/stores", {
-          coordinate: {
-            latitude: 40.780056,
-            longitude: -73.946570
-          },
-          for_men: false,
-          start_date: Date.new,
-          end_date: Date.new
-        }
-        expect(last_response.status).to be 200
-        expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+      context "and near (40.780056, -73.946570)" do
+
+        it "should find for men" do
+          expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/today_for_men.json')).read
+          get "/stores", {
+            coordinate: {
+              latitude: 40.780056,
+              longitude: -73.946570
+            },
+            for_men: true,
+            start_date: Date.new(2011,11,11),
+            end_date: Date.new(2011,11,11)
+          }
+          expect(last_response.status).to be 200
+          expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+        end
+
+        it "should find for women" do
+          expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/today_for_women.json')).read
+          get "/stores", {
+            coordinate: {
+              latitude: 40.780056,
+              longitude: -73.946570
+            },
+            for_men: false,
+            start_date: Date.new(2011,11,11),
+            end_date: Date.new(2011,11,11)
+          }
+          expect(last_response.status).to be 200
+          expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+        end
+
       end
 
     end

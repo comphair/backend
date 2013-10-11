@@ -14,7 +14,18 @@
 		"country": "United States",
 		"phone": "+1 201-369-7000"
 	},
-	"stylists": [],
+	"stylists": [{
+		"name": "Some Guy",
+		"description": "Pick me!",
+		"schedule": {
+			"timeslots": [{
+				"id": 1,
+				"date": "2011-11-11",
+				"start_minutes": 0,
+				"end_minutes": 1440
+			}]
+		}
+	}],
 	"haircuts": [{
 		"id": 4,
 		"name": "Women Standard",
@@ -50,7 +61,18 @@
 		"country": "United States",
 		"phone": "+1 201-369-7000"
 	},
-	"stylists": [],
+	"stylists": [{
+		"name": "Some Guy",
+		"description": "Pick me!",
+		"schedule": {
+			"timeslots": [{
+				"id": 3,
+				"date": "2011-11-11",
+				"start_minutes": 0,
+				"end_minutes": 1440
+			}]
+		}
+	}],
 	"haircuts": [{
 		"id": 16,
 		"name": "Women Standard",
