@@ -77,74 +77,95 @@ describe API::Stores do
           })
         store = FactoryGirl.create(:store, store)
         store.stylists.each { |stylist| stylist.delete }
-        store.stylists << FactoryGirl.create(:stylist, {
+        stylist = FactoryGirl.create(:stylist, {
           store: store,
           name: "Some Guy",
           description: "Pick me!"
           })
+        store.stylists << stylist
+        stylist.schedule.timeslots << FactoryGirl.create(:timeslot, {
+          schedule: stylist.schedule,
+          date: Date.new(2011,11,11),
+          start_minutes: 0,
+          end_minutes: 1440
+          })
       end
     end
 
-    context "when searching for 2011 Nov 11" do
+    context "when searching near (40.780056, -73.946570)" do
 
-      before(:each) do
-        (1..4).each do |id|
-          schedule = Store.find(id).stylists.first.schedule
-          schedule.timeslots << FactoryGirl.create(:timeslot, {
-            schedule: schedule,
-            date: Date.new(2011,11,11),
-            start_minutes: 0,
-            end_minutes: 1440
-            })
-        end
+      it "should find for men" do
+        expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/today_for_men.json')).read
+        get "/stores", {
+          coordinate: {
+            latitude: 40.780056,
+            longitude: -73.946570
+          },
+          for_men: true,
+          start_date: Date.new(2011,11,11),
+          end_date: Date.new(2011,11,11)
+        }
+        expect(last_response.status).to be 200
+        expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
       end
 
-      context "and near (40.780056, -73.946570)" do
+      it "should find for women" do
+        expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/today_for_women.json')).read
+        get "/stores", {
+          coordinate: {
+            latitude: 40.780056,
+            longitude: -73.946570
+          },
+          for_men: false,
+          start_date: Date.new(2011,11,11),
+          end_date: Date.new(2011,11,11)
+        }
+        expect(last_response.status).to be 200
+        expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+      end
 
-        it "should find for men" do
-          expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/today_for_men.json')).read
-          get "/stores", {
-            coordinate: {
-              latitude: 40.780056,
-              longitude: -73.946570
-            },
-            for_men: true,
-            start_date: Date.new(2011,11,11),
-            end_date: Date.new(2011,11,11)
-          }
-          expect(last_response.status).to be 200
-          expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
-        end
+      it "should find for women within week range" do
+        expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/today_for_women.json')).read
+        get "/stores", {
+          coordinate: {
+            latitude: 40.780056,
+            longitude: -73.946570
+          },
+          for_men: false,
+          start_date: Date.new(2011,11,07),
+          end_date: Date.new(2011,11,14)
+        }
+        expect(last_response.status).to be 200
+        expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+      end
 
-        it "should find for women" do
-          expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/today_for_women.json')).read
-          get "/stores", {
-            coordinate: {
-              latitude: 40.780056,
-              longitude: -73.946570
-            },
-            for_men: false,
-            start_date: Date.new(2011,11,11),
-            end_date: Date.new(2011,11,11)
-          }
-          expect(last_response.status).to be 200
-          expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
-        end
+      it "should find for women within month range" do
+        expected_response = File.open(File.join(File.dirname(__FILE__), 'responses/stores/today_for_women.json')).read
+        get "/stores", {
+          coordinate: {
+            latitude: 40.780056,
+            longitude: -73.946570
+          },
+          for_men: false,
+          start_date: Date.new(2011,10,11),
+          end_date: Date.new(2011,12,11)
+        }
+        expect(last_response.status).to be 200
+        expect(JSON.parse(last_response.body)).to eq(JSON.parse(expected_response))
+      end
 
-        it "should find nothing" do
-          get "/stores", {
-            coordinate: {
-              latitude: 40.780056,
-              longitude: -73.946570
-            },
-            for_men: false,
-            start_date: Date.new(2011,11,12),
-            end_date: Date.new(2011,11,12)
-          }
-          expect(last_response.status).to be 200
-          expect(JSON.parse(last_response.body)).to eq([])
-        end
-
+      it "should find nothing" do
+        get "/stores", {
+          coordinate: {
+            latitude: 40.780056,
+            longitude: -73.946570
+          },
+          for_men: false,
+          start_date: Date.new(2011,11,12),
+          end_date: Date.new(2011,11,12)
+        }
+        expect(last_response.status).to be 200
+        expect(JSON.parse(last_response.body)).to eq([])
       end
 
     end
