@@ -5,7 +5,7 @@ describe Placekeeper do
   let!(:store) { FactoryGirl.create(:store) }
 
   let!(:haircut) do
-    store.haircuts.delete
+    store.haircuts.each { |haircut| haircut.delete }
     store.haircuts << FactoryGirl.create(:haircut, store: store, duration: 15)
     store.haircuts << FactoryGirl.create(:haircut, store: store, duration: 25)
     store.haircuts << FactoryGirl.create(:haircut, store: store, duration: 21)
@@ -15,13 +15,14 @@ describe Placekeeper do
   end
 
   let!(:timeslot) do
+    schedule = store.stylists.first.schedule
     timeslot = FactoryGirl.create(:timeslot, {
-      schedule: store.schedule,
+      schedule: schedule,
       date: Date.new(2011,11,11),
       start_minutes: 1000,
       end_minutes: 1200
       })
-    store.schedule.timeslots << timeslot
+    schedule.timeslots << timeslot
     timeslot
   end
 

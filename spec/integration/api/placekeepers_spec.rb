@@ -11,13 +11,14 @@ describe API::Placekeepers do
   end
 
   let!(:timeslot) do
+    schedule = store.stylists.first.schedule
     timeslot = FactoryGirl.create(:timeslot, {
-      schedule: store.schedule,
+      schedule: schedule,
       date: Date.new(2011,11,11),
       start_minutes: 1000,
       end_minutes: 1200
       })
-    store.schedule.timeslots << timeslot
+    schedule.timeslots << timeslot
     timeslot
   end
 

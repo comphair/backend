@@ -1,8 +1,8 @@
 class Schedule < ActiveRecord::Base
 
-  validates :store, presence: true, on: :update
+  validates :stylist, presence: true, on: :update
 
-  belongs_to :store
+  belongs_to :stylist
   has_many :timeslots
 
 end

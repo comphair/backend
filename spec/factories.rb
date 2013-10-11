@@ -6,15 +6,15 @@ FactoryGirl.define do
     rating        0
     after(:build) do |store|
       store.address = FactoryGirl.build(:address, store: store) unless store.address
-      store.schedule = FactoryGirl.build(:schedule, store: store) unless store.schedule
+      store.stylists = FactoryGirl.build_list(:stylist, 2, store: store) if store.stylists.empty?
       store.haircuts = FactoryGirl.build_list(:haircut, 5, store: store) if store.haircuts.empty?
     end
     before(:create) do |store|
-      store.save!(validate:false)
+      store.save!(validate: false)
     end
     after(:create) do |store|
       store.address.save!
-      store.schedule.save!
+      store.stylists.each { |stylist| stylist.save! }
       store.haircuts.each { |haircut| haircut.save! }
     end
   end
@@ -39,12 +39,20 @@ FactoryGirl.define do
 
   end
 
+  factory :stylist do
+    name        "Max Payne"
+    description "I'm am a super awesome stylist. Pick me!"
+    after(:build) do |stylist|
+      stylist.schedule = FactoryGirl.build(:schedule, stylist: stylist) unless stylist.schedule
+    end
+  end
+
   factory :schedule do
 
   end
 
   factory :customer do
-    name  "John Doe"
+    name  "John Wayne"
   end
 
   factory :haircut do

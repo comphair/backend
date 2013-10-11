@@ -71,7 +71,8 @@ describe API::Stores do
           price: 24.99,
           for_men: false
           })
-        FactoryGirl.create(:store, store)
+        store = FactoryGirl.create(:store, store)
+        store.stylists.each { |stylist| stylist.delete }
       end
     end
 

@@ -4,7 +4,9 @@ describe Timeslot do
 
   let(:schedule) do
     store = FactoryGirl.create(:store)
-    FactoryGirl.build(:schedule, store: store)
+    stylist = FactoryGirl.build(:stylist, store: store)
+    stylist.save!(validate: false)
+    FactoryGirl.build(:schedule, stylist: stylist)
   end
 
   describe "validation" do

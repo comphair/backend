@@ -18,7 +18,7 @@ class API::Stores < API::Base
     location = [params[:coordinate][:latitude], params[:coordinate][:longitude]]
     addresses = Address.near(location, 1) # 1 mile radius
     near_stores = []
-    stores = Store.includes(:address, :haircuts, schedule: :timeslots)
+    stores = Store.includes(:address, :haircuts, stylists: { schedule: :timeslots })
                   .where(haircuts: { for_men: params[:for_men] })
                   .order("rating DESC, haircuts.id ASC")
 
