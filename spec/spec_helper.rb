@@ -1,10 +1,12 @@
 ENV["ENV"] = "testing"
 
 require "simplecov"
-require "coveralls"
-
 SimpleCov.start
-Coveralls.wear!
+
+if ENV["TRAVIS"]
+  require "coveralls"
+  Coveralls.wear!
+end
 
 require "./env"
 

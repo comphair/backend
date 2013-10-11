@@ -1,5 +1,6 @@
 env:
 - ENV=testing
+- TRAVIS=true
 rvm:
 - 2.0.0
 before_script:
