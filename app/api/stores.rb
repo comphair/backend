@@ -1,3 +1,7 @@
+class Store
+  attr_accessor :distance
+end
+
 class API::Stores < API::Base
 
   desc "Find stores"
@@ -11,7 +15,6 @@ class API::Stores < API::Base
     optional :end_date, type: Date, desc: "End day for range query"
   end
   get 'stores' do
-    # ActiveRecord::Base.logger = Logger.new(STDOUT)
     location = [params[:coordinate][:latitude], params[:coordinate][:longitude]]
     addresses = Address.near(location, 1) # 1 mile radius
     near_stores = []

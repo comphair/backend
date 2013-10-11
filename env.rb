@@ -32,14 +32,14 @@ ActiveRecord::Base.establish_connection(YAML.load(File.read("config/database.yml
 
 require "./app/api/base"
 
-Dir["#{File.dirname(__FILE__)}/app/workers/*.rb"].each {|f| require f}
-Dir["#{File.dirname(__FILE__)}/app/api/*.rb"].each {|f| require f}
-Dir["#{File.dirname(__FILE__)}/app/api/serializers/*.rb"].each {|f| require f}
-Dir["#{File.dirname(__FILE__)}/app/helpers/*.rb"].each {|f| require f}
-Dir["#{File.dirname(__FILE__)}/app/models/*.rb"].each {|f| require f}
-Dir["#{File.dirname(__FILE__)}/config/initializers/*.rb"].each {|f| require f}
+Dir["#{File.dirname(__FILE__)}/app/workers/*.rb"].each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/app/models/*.rb"].each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/app/api/serializers/*.rb"].each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/app/api/*.rb"].each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/app/helpers/*.rb"].each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/config/initializers/*.rb"].each { |f| require f }
 
 if env == "development"
   require "./app/api/helpers/base"
-  Dir["#{File.dirname(__FILE__)}/app/api/helpers/*.rb"].each {|f| require f}
+  Dir["#{File.dirname(__FILE__)}/app/api/helpers/*.rb"].each { |f| require f }
 end
