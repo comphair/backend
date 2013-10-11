@@ -83,7 +83,7 @@ stores:
         duration: 55
         price: 79.99
         for_men: false
-  - title: "Samar Spa & salon"
+  - title: "Salon West"
     address:
       street: "172 W 85th St"
       zipcode: "10024"

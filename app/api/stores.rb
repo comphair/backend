@@ -11,21 +11,25 @@ class API::Stores < API::Base
     optional :end_date, type: Date, desc: "End day for range query"
   end
   get 'stores' do
+    # ActiveRecord::Base.logger = Logger.new(STDOUT)
     location = [params[:coordinate][:latitude], params[:coordinate][:longitude]]
-    addresses = Address.includes(store: [:haircuts, schedule: :timeslots]).near(location, 1) # 1 mile radius
-    stores = []
-    addresses.each do |address|
-      store = address.store
-      filtered_haircuts = []
-      store.haircuts.each do |haircut|
-        filtered_haircuts << haircut if haircut.for_men == params[:for_men]
+    addresses = Address.near(location, 1) # 1 mile radius
+    near_stores = []
+    stores = Store.includes(:address, :haircuts, schedule: :timeslots)
+                  .where(haircuts: { for_men: params[:for_men] })
+
+    stores.each do |store|
+      address = addresses.reject{ |address| address.store_id != store.id }.first
+      if address
+        store.distance = address.distance.to_f.round(2)
+        near_stores << store
       end
-      # store.haircuts = filtered_haircuts
-      store.distance = address.distance # trim precsion
-      stores << store unless filtered_haircuts.empty?
     end
-    stores = stores.sort_by! { |store| - store.rating }
-    stores = stores.sort_by! { |store| store.distance }
+
+    near_stores = near_stores.sort_by! { |store| - store.rating }
+    near_stores = near_stores.sort_by! { |store| store.distance }
+
+    near_stores
   end
 
 end

@@ -1,8 +1,8 @@
 [{
-	"title": "Samar Spa \u0026 salon",
-	"description": "Description of Samar Spa \u0026 salon",
+	"title": "Samar Spa & salon",
+	"description": "Samar Spa & salon",
 	"rating": 5.0,
-	"distance": "9.81875190767056e-13",
+	"distance": 0.0,
 	"address": {
 		"first_name": "John",
 		"last_name": "Doe",
@@ -18,47 +18,29 @@
 		"timeslots": []
 	},
 	"haircuts": [{
-		"id": 1,
+		"id": 3,
 		"name": "Men Standard",
-		"price": 14.99,
 		"duration": 20,
+		"price": 14.99,
 		"for_men": true
 	}, {
 		"id": 2,
 		"name": "Men Standard",
-		"price": 14.99,
 		"duration": 20,
+		"price": 14.99,
 		"for_men": true
 	}, {
-		"id": 3,
+		"id": 1,
 		"name": "Men Standard",
-		"price": 14.99,
 		"duration": 20,
+		"price": 14.99,
 		"for_men": true
-	}, {
-		"id": 4,
-		"name": "Women Standard",
-		"price": 14.99,
-		"duration": 20,
-		"for_men": false
-	}, {
-		"id": 5,
-		"name": "Women Standard",
-		"price": 14.99,
-		"duration": 20,
-		"for_men": false
-	}, {
-		"id": 6,
-		"name": "Women Standard",
-		"price": 14.99,
-		"duration": 20,
-		"for_men": false
 	}]
 }, {
 	"title": "Yves Durif Salon",
-	"description": "Description of Yves Durif Salon",
+	"description": "Yves Durif Salon",
 	"rating": 3.0,
-	"distance": "0.955709268872731",
+	"distance": 0.96,
 	"address": {
 		"first_name": "John",
 		"last_name": "Doe",
@@ -74,40 +56,22 @@
 		"timeslots": []
 	},
 	"haircuts": [{
-		"id": 13,
+		"id": 15,
 		"name": "Men Standard",
-		"price": 14.99,
 		"duration": 20,
+		"price": 14.99,
 		"for_men": true
 	}, {
 		"id": 14,
 		"name": "Men Standard",
-		"price": 14.99,
 		"duration": 20,
+		"price": 14.99,
 		"for_men": true
 	}, {
-		"id": 15,
+		"id": 13,
 		"name": "Men Standard",
-		"price": 14.99,
 		"duration": 20,
+		"price": 14.99,
 		"for_men": true
-	}, {
-		"id": 16,
-		"name": "Women Standard",
-		"price": 14.99,
-		"duration": 20,
-		"for_men": false
-	}, {
-		"id": 17,
-		"name": "Women Standard",
-		"price": 14.99,
-		"duration": 20,
-		"for_men": false
-	}, {
-		"id": 18,
-		"name": "Women Standard",
-		"price": 14.99,
-		"duration": 20,
-		"for_men": false
 	}]
 }]
