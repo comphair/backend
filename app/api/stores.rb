@@ -17,6 +17,7 @@ class API::Stores < API::Base
     near_stores = []
     stores = Store.includes(:address, :haircuts, schedule: :timeslots)
                   .where(haircuts: { for_men: params[:for_men] })
+                  .order("rating DESC, haircuts.id ASC")
 
     stores.each do |store|
       address = addresses.reject{ |address| address.store_id != store.id }.first
@@ -26,10 +27,7 @@ class API::Stores < API::Base
       end
     end
 
-    near_stores = near_stores.sort_by! { |store| - store.rating }
     near_stores = near_stores.sort_by! { |store| store.distance }
-
-    near_stores
   end
 
 end
